@@ -37,6 +37,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework', # new
+    'rest_framework.authtoken', # new, dj-rest-auth
+    'dj_rest_auth', # new, dj-rest-auth
+    # dj-rest-auth registration apps
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'dj_rest_auth.registration',
 ]
 
 MIDDLEWARE = [
@@ -121,3 +130,17 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Make django use a custom user model
+# Helps with migration and any customization later on
+AUTH_USER_MODEL = 'users.CustomUser'
+
+# User parameters, makes email the identifier and stops username being required
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_UNIQUE_EMAIL = True
+
+# added to be able to enter multiple sites for auth
+SITE_ID = 1
