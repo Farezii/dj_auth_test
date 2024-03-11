@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'dj_rest_auth.registration',
     # Google provider for allauth
     'allauth.socialaccount.providers.google',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -173,3 +174,6 @@ ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 # added to be able to enter multiple sites for auth
 SITE_ID = 1
+
+# Same URI that google project has for redirect
+GOOGLE_REDIRECT_URL = 'http://127.0.0.1'
